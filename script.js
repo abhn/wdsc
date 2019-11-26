@@ -1,4 +1,7 @@
 let submitButton = document.querySelector('#submit-button');
+function emailValidate(email) {
+	return email.includes('@');
+}
 let clickListener = event => {
 	event.preventDefault();
 	let emailInput = document.querySelector('#email');
@@ -7,6 +10,11 @@ let clickListener = event => {
 	let emailText = emailInput.value;
 	let messageText = messageInput.value;
 
-	console.log('email:', emailText, 'message:', messageText);
+	if(emailValidate(emailText) !== true) {
+		console.log('The email address must contain @');
+		return false;
+	}
+	console.log('Thanks for your message');
+
 }
 submitButton.addEventListener('click', clickListener);
